@@ -1,13 +1,13 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #fff8f8;
+  background-color: #f9f9f9;
   color: #333;
 }
 
 .header {
-  background-color: #ffdbe6;
+  background-color: #f2dede;
   padding: 40px;
   text-align: center;
 }
@@ -15,7 +15,6 @@ body {
 .header h1 {
   margin: 0;
   font-size: 3em;
-  color: #c0392b;
 }
 
 .image-section {
@@ -31,17 +30,57 @@ body {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.info {
+.info, .care {
   max-width: 700px;
   margin: 0 auto;
   padding: 20px;
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
 }
 
 .features ul {
   padding-left: 20px;
+}
+
+.bar-container p {
+  margin: 10px 0 5px;
+}
+
+.bar {
+  width: 100%;
+  height: 20px;
+  background-color: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.bar-fill {
+  height: 100%;
+  background-color: #27ae60;
+  width: 100%;
+  transition: width 0.5s;
+}
+
+.button-group {
+  text-align: center;
+}
+
+.button-group button {
+  margin: 10px;
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.button-group button:hover {
+  background-color: #2980b9;
 }
 
 .cta, .adventure {
@@ -49,7 +88,7 @@ body {
   margin: 40px auto;
 }
 
-.cta button, .adventure button {
+.cta button {
   padding: 12px 24px;
   font-size: 16px;
   background-color: #e74c3c;
@@ -57,32 +96,8 @@ body {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
 .cta button:hover {
   background-color: #c0392b;
-}
-
-#adventure {
-  margin-top: 40px;
-}
-
-#countryImage {
-  border-radius: 10px;
-  max-width: 80%;
-  margin: 20px 0;
-}
-
-#visitedList {
-  list-style-type: none;
-  padding: 0;
-}
-
-#visitedList li {
-  background-color: #ffe4ec;
-  margin: 5px auto;
-  padding: 10px;
-  border-radius: 8px;
-  width: 60%;
 }
