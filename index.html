@@ -1,23 +1,37 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Minik Mino - Sana Özel 🐾</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pet Bakım Sistemi 🐾</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>Merhaba Ayşe! 🐾</h1>
-    <p>Bugün <strong>Mino</strong> seni çok özledi...</p>
+    <h1>Minik Mino'nun Bakım Merkezi</h1>
 
-    <div class="buttons">
-      <button onclick="feed()">🍖 Yemek Ver</button>
-      <button onclick="pet()">❤️ Sev</button>
-      <button onclick="play()">🎾 Oyna</button>
+    <div class="status">
+      <p>Açlık: <span id="hunger">50</span>/100</p>
+      <p>Mutluluk: <span id="happiness">50</span>/100</p>
+      <p>Temizlik: <span id="cleanliness">50</span>/100</p>
     </div>
 
-    <p id="response"></p>
+    <div class="controls">
+      <h2>Yemek Ver</h2>
+      <select id="food-select">
+        <option value="kedi-mamasi">Kedi Maması</option>
+        <option value="balik">Balık</option>
+        <option value="tavuk">Tavuk</option>
+      </select>
+      <button onclick="feed()">Yemek Ver</button>
+
+      <h2>Diğer Bakım</h2>
+      <button onclick="takeBath()">Duş Al</button>
+      <button onclick="play()">Oyna</button>
+    </div>
+
+    <div id="message"></div>
   </div>
 
   <script src="script.js"></script>
