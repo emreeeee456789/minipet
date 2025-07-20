@@ -4,17 +4,15 @@ document.addEventListener('DOMContentLoaded', function() {
   let cleanliness = 50;
 
   function updateStatus() {
-    document.getElementById('hunger').innerText = hunger;
-    document.getElementById('happiness').innerText = happiness;
-    document.getElementById('cleanliness').innerText = cleanliness;
+    document.getElementById('hunger-bar').style.width = hunger + '%';
+    document.getElementById('happiness-bar').style.width = happiness + '%';
+    document.getElementById('cleanliness-bar').style.width = cleanliness + '%';
   }
 
   function showMessage(msg) {
     const msgEl = document.getElementById('message');
     msgEl.innerText = msg;
-    setTimeout(() => {
-      msgEl.innerText = '';
-    }, 3000);
+    setTimeout(() => { msgEl.innerText = ''; }, 3000);
   }
 
   window.feed = function() {
