@@ -1,114 +1,169 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Miniğimiz</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Miniğimiz - Emre & Simge</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f9f9f9;
-      color: #333;
-    }
-
-    .header {
-      background-color: #f2dede;
-      padding: 40px;
+      background-color: #fefefe;
       text-align: center;
     }
 
-    .header h1 {
-      margin: 0;
-      font-size: 3em;
+    header {
+      background-color: #ffdada;
+      padding: 30px;
     }
 
-    .image-section {
+    header h1 {
+      margin: 0;
+      font-size: 2.8em;
+      color: #b22222;
+    }
+
+    .baby-img img {
+      width: 250px;
+      border-radius: 12px;
+      margin-top: 30px;
+    }
+
+    .bars {
       display: flex;
       justify-content: center;
-      margin: 30px 0;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 30px;
     }
 
-    .image-section img {
-      max-width: 90%;
-      height: auto;
-      border: none;
-      border-radius: 0;
-      box-shadow: none;
+    .bar {
+      width: 220px;
+      text-align: left;
     }
 
-    .info {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    .bar span {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
     }
 
-    .info h2 {
-      margin-top: 0;
+    .progress {
+      background-color: #eee;
+      border-radius: 5px;
+      height: 20px;
+      overflow: hidden;
     }
 
-    .features ul {
-      padding-left: 20px;
+    .progress-inner {
+      height: 100%;
+      width: 50%;
+      background-color: #5cb85c;
+      transition: width 0.3s ease;
     }
 
-    .cta {
-      text-align: center;
-      margin: 30px;
+    .buttons {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
     }
 
-    .cta button {
-      padding: 12px 24px;
+    .buttons button {
+      padding: 12px 25px;
       font-size: 16px;
-      background-color: #d9534f;
-      color: #fff;
+      background-color: #ff6f61;
+      color: white;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
       transition: background-color 0.3s;
     }
 
-    .cta button:hover {
-      background-color: #c9302c;
+    .buttons button:hover {
+      background-color: #e64545;
     }
   </style>
 </head>
 <body>
-  <div class="header">
+  <header>
     <h1>Miniğimiz</h1>
-    <p>Emre & Simge'nin gururla sunduğu geleceğin minik yıldızı ✨</p>
+    <p>Emre & Simge'nin tatlı gelecek versiyonu 👶✨</p>
+  </header>
+
+  <div class="baby-img">
+    <img src="minigimiz.png" alt="Miniğimiz">
   </div>
 
-  <div class="image-section">
-    <img src="minigimiz.png" alt="Miniğimizin tatlı portresi" />
-  </div>
-
-  <div class="info">
-    <h2>Tanıştıralım: Miniğimiz</h2>
-    <p>
-      Gelecekte hayatımıza neşe, kahkaha ve bol bol uykusuzluk getirecek olan miniğimizle tanışın!
-      Genetik olarak Emre ve Simge'den türetilmiş bu özel model, sevgiyle üretilmiş ve %100 gerçek duygularla donatılmıştır.
-    </p>
-
-    <div class="features">
-      <h3>Bakım Özellikleri</h3>
-      <ul>
-        <li>Günde en az 100 kez öpülmeli 😘</li>
-        <li>Her ağladığında sarılarak susturulmalı 🤗</li>
-        <li>İlgi ve sevgiyle büyür 🌱</li>
-        <li>Uykudan önce masal şart! 📖</li>
-        <li>Süt + çikolata = mutlu miniğimiz 🍼🍫</li>
-      </ul>
+  <div class="bars">
+    <div class="bar">
+      <span>Beslenme 🍽️</span>
+      <div class="progress"><div id="hunger" class="progress-inner"></div></div>
+    </div>
+    <div class="bar">
+      <span>Uyku 😴</span>
+      <div class="progress"><div id="sleep" class="progress-inner"></div></div>
+    </div>
+    <div class="bar">
+      <span>Temizlik 🛁</span>
+      <div class="progress"><div id="clean" class="progress-inner"></div></div>
     </div>
   </div>
 
-  <div class="cta">
-    <button onclick="alert('Miniğimizin kalbi şimdilik yalnızca Emre & Simge için atıyor 💕')">
-      Sahiplenmek İstedim 🙈
-    </button>
+  <div class="buttons">
+    <button onclick="feed()">Besle</button>
+    <button onclick="sleep()">Uyut</button>
+    <button onclick="clean()">Duş Aldır</button>
   </div>
+
+  <script>
+    let hunger = 50;
+    let sleepLevel = 50;
+    let cleanliness = 50;
+
+    function updateBars() {
+      document.getElementById('hunger').style.width = hunger + '%';
+      document.getElementById('sleep').style.width = sleepLevel + '%';
+      document.getElementById('clean').style.width = cleanliness + '%';
+
+      // Renk güncelle
+      updateColor('hunger', hunger);
+      updateColor('sleep', sleepLevel);
+      updateColor('clean', cleanliness);
+    }
+
+    function updateColor(id, value) {
+      let color;
+      if (value > 70) color = '#5cb85c';
+      else if (value > 40) color = '#f0ad4e';
+      else color = '#d9534f';
+      document.getElementById(id).style.backgroundColor = color;
+    }
+
+    function feed() {
+      hunger = Math.min(hunger + 20, 100);
+      sleepLevel = Math.max(sleepLevel - 5, 0);
+      cleanliness = Math.max(cleanliness - 5, 0);
+      updateBars();
+    }
+
+    function sleep() {
+      sleepLevel = Math.min(sleepLevel + 20, 100);
+      hunger = Math.max(hunger - 5, 0);
+      cleanliness = Math.max(cleanliness - 5, 0);
+      updateBars();
+    }
+
+    function clean() {
+      cleanliness = Math.min(cleanliness + 20, 100);
+      hunger = Math.max(hunger - 5, 0);
+      sleepLevel = Math.max(sleepLevel - 5, 0);
+      updateBars();
+    }
+
+    updateBars();
+  </script>
 </body>
 </html>
