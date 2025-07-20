@@ -1,98 +1,15 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Mini Pet 3D Bakım Sistemi</title>
-<style>
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #a8edea, #fed6e3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
-  .container {
-    background: white;
-    border-radius: 20px;
-    padding: 30px;
-    max-width: 500px;
-    width: 100%;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    text-align: center;
-  }
-  h1 {
-    margin-bottom: 15px;
-    font-weight: 700;
-    color: #333;
-  }
-  iframe {
-    border-radius: 20px;
-    border: none;
-    width: 320px;
-    height: 320px;
-    margin-bottom: 20px;
-    user-select: none;
-  }
-  .status-bar {
-    margin: 15px 0;
-    text-align: left;
-  }
-  .status-bar span {
-    font-weight: 600;
-    display: block;
-    margin-bottom: 6px;
-  }
-  .progress-container {
-    background: #eee;
-    border-radius: 10px;
-    overflow: hidden;
-    height: 22px;
-  }
-  .progress {
-    height: 100%;
-    width: 50%;
-    background: #4caf50;
-    transition: width 0.4s ease;
-  }
-  .progress.happiness { background: #ff9800; }
-  .progress.cleanliness { background: #03a9f4; }
-
-  .buttons {
-    margin-top: 20px;
-  }
-  select, button {
-    background: #0077cc;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 12px;
-    font-weight: 700;
-    margin: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  select {
-    padding-left: 10px;
-  }
-  select:hover, button:hover {
-    background: #005fa3;
-  }
-  #message {
-    margin-top: 15px;
-    min-height: 24px;
-    font-weight: 600;
-    color: #555;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mini Pet 3D Bakım Sistemi</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="container">
     <h1>Minik Mino'nun 3D Bakımı</h1>
 
-    <!-- Buraya yeni iframe embed kodunu yapıştırdık -->
     <iframe 
       title="Cat Shorthair" 
       frameborder="0" 
@@ -100,4 +17,48 @@
       mozallowfullscreen="true" 
       webkitallowfullscreen="true" 
       allow="autoplay; fullscreen; xr-spatial-tracking" 
-      xr-s
+      xr-spatial-tracking 
+      execution-while-out-of-viewport 
+      execution-while-not-rendered 
+      web-share
+      src="https://sketchfab.com/models/93824c44bbb3472f842be580a1765c1a/embed" 
+      width="320" 
+      height="320">
+    </iframe>
+
+    <div class="status-bar">
+      <span>Açlık</span>
+      <div class="progress-container">
+        <div id="hunger-bar" class="progress"></div>
+      </div>
+    </div>
+    <div class="status-bar">
+      <span>Mutluluk</span>
+      <div class="progress-container">
+        <div id="happiness-bar" class="progress happiness"></div>
+      </div>
+    </div>
+    <div class="status-bar">
+      <span>Temizlik</span>
+      <div class="progress-container">
+        <div id="cleanliness-bar" class="progress cleanliness"></div>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <select id="food-select">
+        <option value="kedi-mamasi">Kedi Maması</option>
+        <option value="balik">Balık</option>
+        <option value="tavuk">Tavuk</option>
+      </select>
+      <button onclick="feed()">Yemek Ver</button>
+      <button onclick="takeBath()">Duş Al</button>
+      <button onclick="play()">Oyna</button>
+    </div>
+
+    <div id="message"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
