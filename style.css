@@ -7,6 +7,7 @@ body {
   height: 100vh;
   margin: 0;
 }
+
 .container {
   background: white;
   border-radius: 20px;
@@ -16,11 +17,13 @@ body {
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
   text-align: center;
 }
+
 h1 {
   margin-bottom: 15px;
   font-weight: 700;
   color: #333;
 }
+
 iframe {
   border-radius: 20px;
   border: none;
@@ -29,33 +32,44 @@ iframe {
   margin-bottom: 20px;
   user-select: none;
 }
+
 .status-bar {
   margin: 15px 0;
   text-align: left;
 }
+
 .status-bar span {
   font-weight: 600;
   display: block;
   margin-bottom: 6px;
 }
+
 .progress-container {
   background: #eee;
   border-radius: 10px;
   overflow: hidden;
   height: 22px;
 }
+
 .progress {
   height: 100%;
   width: 50%;
   background: #4caf50;
   transition: width 0.4s ease;
 }
-.progress.happiness { background: #ff9800; }
-.progress.cleanliness { background: #03a9f4; }
+
+.progress.happiness {
+  background: #ff9800;
+}
+
+.progress.cleanliness {
+  background: #03a9f4;
+}
 
 .buttons {
   margin-top: 20px;
 }
+
 select, button {
   background: #0077cc;
   color: white;
@@ -67,12 +81,15 @@ select, button {
   cursor: pointer;
   transition: background 0.3s ease;
 }
+
 select {
   padding-left: 10px;
 }
+
 select:hover, button:hover {
   background: #005fa3;
 }
+
 #message {
   margin-top: 15px;
   min-height: 24px;
