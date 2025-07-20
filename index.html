@@ -2,195 +2,99 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mini Pet 3D Bakım Sistemi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Miniğimiz</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #a8edea, #fed6e3);
-      margin: 0; padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      height: 100vh;
-      gap: 40px;
-      padding: 40px;
-    }
-    .container {
-      background: white;
-      border-radius: 20px;
-      padding: 30px;
-      max-width: 500px;
-      width: 100%;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-      text-align: center;
-    }
-    h1 {
-      margin-bottom: 15px;
-      font-weight: 700;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
       color: #333;
     }
-    iframe {
-      border-radius: 20px;
-      border: none;
-      width: 320px;
-      height: 320px;
-      user-select: none;
+    .header {
+      background-color: #f2dede;
+      padding: 40px;
+      text-align: center;
     }
-    .status-bar {
-      margin: 15px 0;
-      text-align: left;
+    .header h1 {
+      margin: 0;
+      font-size: 3em;
     }
-    .status-bar span {
-      font-weight: 600;
-      display: block;
-      margin-bottom: 6px;
+    .image-section {
+      display: flex;
+      justify-content: center;
+      margin: 30px 0;
     }
-    .progress-container {
-      background: #eee;
-      border-radius: 10px;
-      overflow: hidden;
-      height: 22px;
-    }
-    .progress {
-      height: 100%;
-      width: 50%;
-      background: #4caf50;
-      transition: width 0.4s ease;
-    }
-    .progress.happiness {
-      background: #ff9800;
-    }
-    .progress.cleanliness {
-      background: #03a9f4;
-    }
-    .buttons {
-      margin-top: 20px;
-    }
-    select, button {
-      background: #0077cc;
-      color: white;
-      border: none;
-      padding: 12px 20px;
+    .image-section img {
       border-radius: 12px;
-      font-weight: 700;
-      margin: 5px;
+      max-width: 90%;
+      height: auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .info {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .info h2 {
+      margin-top: 0;
+    }
+    .features ul {
+      padding-left: 20px;
+    }
+    .cta {
+      text-align: center;
+      margin: 30px;
+    }
+    .cta button {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #d9534f;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: background-color 0.3s;
     }
-    select {
-      padding-left: 10px;
-    }
-    select:hover, button:hover {
-      background: #005fa3;
-    }
-    #message {
-      margin-top: 15px;
-      min-height: 24px;
-      font-weight: 600;
-      color: #555;
+    .cta button:hover {
+      background-color: #c9302c;
     }
   </style>
 </head>
 <body>
-
-  <iframe 
-    title="Cat Shorthair" 
-    src="https://sketchfab.com/models/93824c44bbb3472f842be580a1765c1a/embed" 
-    allowfullscreen 
-    mozallowfullscreen="true" 
-    webkitallowfullscreen="true" 
-    width="320" 
-    height="320">
-  </iframe>
-
-  <div class="container">
-    <h1>Minik Mino'nun Bakımı</h1>
-
-    <div class="status-bar">
-      <span>Açlık</span>
-      <div class="progress-container">
-        <div id="hunger-bar" class="progress"></div>
-      </div>
-    </div>
-    <div class="status-bar">
-      <span>Mutluluk</span>
-      <div class="progress-container">
-        <div id="happiness-bar" class="progress happiness"></div>
-      </div>
-    </div>
-    <div class="status-bar">
-      <span>Temizlik</span>
-      <div class="progress-container">
-        <div id="cleanliness-bar" class="progress cleanliness"></div>
-      </div>
-    </div>
-
-    <div class="buttons">
-      <select id="food-select">
-        <option value="kedi-mamasi">Kedi Maması</option>
-        <option value="balik">Balık</option>
-        <option value="tavuk">Tavuk</option>
-      </select>
-      <button onclick="feed()">Yemek Ver</button>
-      <button onclick="takeBath()">Duş Al</button>
-      <button onclick="play()">Oyna</button>
-    </div>
-
-    <div id="message"></div>
+  <div class="header">
+    <h1>Miniğimiz</h1>
+    <p>Emre & Simge'nin gururla sunduğu geleceğin minik yıldızı ✨</p>
   </div>
 
-  <script>
-    let hunger = 50;
-    let happiness = 50;
-    let cleanliness = 50;
+  <div class="image-section">
+    <img src="minigimiz.jpg" alt="Miniğimizin tatlı portresi" />
+  </div>
 
-    function updateStatus() {
-      document.getElementById('hunger-bar').style.width = hunger + '%';
-      document.getElementById('happiness-bar').style.width = happiness + '%';
-      document.getElementById('cleanliness-bar').style.width = cleanliness + '%';
-    }
+  <div class="info">
+    <h2>Tanıştıralım: Miniğimiz</h2>
+    <p>
+      Gelecekte hayatımıza neşe, kahkaha ve bol bol uykusuzluk getirecek olan miniğimizle tanışın! Genetik olarak Emre ve Simge'den türetilmiş bu özel model, sevgiyle üretilmiş ve %100 gerçek duygularla donatılmıştır.
+    </p>
 
-    function showMessage(msg) {
-      const msgEl = document.getElementById('message');
-      msgEl.innerText = msg;
-      setTimeout(() => { msgEl.innerText = ''; }, 3000);
-    }
+    <div class="features">
+      <h3>Bakım Özellikleri</h3>
+      <ul>
+        <li>Günde en az 100 kez öpülmeli 😘</li>
+        <li>Her ağladığında sarılarak susturulmalı 🤗</li>
+        <li>İlgi ve sevgiyle büyür 🌱</li>
+        <li>Uykudan önce masal şart! 📖</li>
+        <li>Süt + çikolata = mutlu miniğimiz 🍼🍫</li>
+      </ul>
+    </div>
+  </div>
 
-    function feed() {
-      const food = document.getElementById('food-select').value;
-      if(food === 'kedi-mamasi') {
-        hunger = Math.min(hunger + 20, 100);
-        happiness = Math.min(happiness + 5, 100);
-        showMessage('Mino kedi maması yedi, afiyet olsun!');
-      } else if(food === 'balik') {
-        hunger = Math.min(hunger + 30, 100);
-        happiness = Math.min(happiness + 10, 100);
-        showMessage('Mino balık yedi, çok mutlu!');
-      } else if(food === 'tavuk') {
-        hunger = Math.min(hunger + 25, 100);
-        happiness = Math.min(happiness + 7, 100);
-        showMessage('Mino tavuk yedi, lezzetliydi!');
-      }
-      updateStatus();
-    }
-
-    function takeBath() {
-      cleanliness = 100;
-      happiness = Math.min(happiness + 10, 100);
-      showMessage('Mino güzelce duş aldı, tertemiz!');
-      updateStatus();
-    }
-
-    function play() {
-      happiness = Math.min(happiness + 15, 100);
-      cleanliness = Math.max(cleanliness - 10, 0);
-      showMessage('Mino oynuyor ve çok eğleniyor!');
-      updateStatus();
-    }
-
-    updateStatus();
-  </script>
-
+  <div class="cta">
+    <button onclick="alert('Miniğimizin kalbi şimdilik yalnızca Emre & Simge için atıyor 💕')">Sahiplenmek İstedim 🙈</button>
+  </div>
 </body>
 </html>
