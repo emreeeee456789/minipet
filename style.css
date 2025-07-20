@@ -1,29 +1,41 @@
+/* style.css */
 body {
-  font-family: 'Comic Sans MS', sans-serif;
-  background: #fffaf0;
+  font-family: Arial, sans-serif;
+  background: #f0f8ff;
   text-align: center;
-  padding: 30px;
+  padding: 20px;
 }
 .container {
-  background: #ffe4e1;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 0 10px #ccc;
+  background: #fff;
   max-width: 400px;
   margin: auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+.status p {
+  font-size: 18px;
+  margin: 8px 0;
+}
+.controls {
+  margin-top: 20px;
 }
 button {
-  font-size: 16px;
-  margin: 10px;
-  padding: 10px 20px;
-  border-radius: 10px;
+  padding: 10px 15px;
+  margin: 10px 5px;
   border: none;
+  border-radius: 8px;
   cursor: pointer;
-  background-color: #ff69b4;
+  background: #0077cc;
   color: white;
+  font-weight: bold;
 }
-#response {
+select {
+  padding: 8px;
+  font-size: 16px;
+}
+#message {
   margin-top: 20px;
   font-weight: bold;
-  color: #444;
+  color: #333;
 }
