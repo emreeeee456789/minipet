@@ -1,25 +1,25 @@
-// Supabase bağlantısı
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
-const supabaseUrl = 'https://SENIN_PROJECT_URL.supabase.co';
-const supabaseKey = 'SENIN_PUBLIC_ANON_KEY';
+const supabaseUrl = 'https://XXX.supabase.co';
+const supabaseKey = 'public-anon-key';
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-// Miniğimizi maceraya yolla
 async function miniMaceraBaslat(ulke) {
+  console.log("Butona tıklandı, ülke:", ulke);
+
   const { data, error } = await supabase
     .from('macera')
     .insert([{ ulke: ulke, tarih: new Date().toISOString() }]);
 
   if (error) {
-    alert('Bir hata oluştu: ' + error.message);
+    console.error('Supabase hatası:', error);
+    alert('Hata: ' + error.message);
   } else {
     alert(`Miniğimiz ${ulke} ülkesine gönderildi! 🌍`);
     window.location.href = "adventure.html";
   }
 }
 
-// Sayfa yüklendiğinde butona tıklanırsa
 document.addEventListener('DOMContentLoaded', () => {
   const maceraBtn = document.getElementById('maceraBtn');
   if (maceraBtn) {
@@ -32,4 +32,3 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-});
