@@ -40,24 +40,25 @@ function degradeStats() {
 
 setInterval(degradeStats, 5000); // 5 saniyede bir azalsın
 
-function startAdventure() {
-  const random = countries[Math.floor(Math.random() * countries.length)];
+async function maceraListesiniGoster() {
+  const { data, error } = await supabase
+    .from('macera')
+    .select('*')
+    .order('tarih', { ascending: false });
 
-  if (!visited.includes(random.name)) {
-    visited.push(random.name);
-
-    const img = document.getElementById("countryImage");
-    img.src = random.image;
-    img.style.display = "block";
-    img.alt = random.name;
-
-    const list = document.getElementById("visitedList");
-    const li = document.createElement("li");
-    li.textContent = random.name;
-    list.appendChild(li);
-  } else {
-    alert(`${random.name} zaten ziyaret edildi!`);
+  const liste = document.getElementById('visitedList');
+  if (data && liste) {
+    liste.innerHTML = '';
+    data.forEach(entry => {
+      const li = document.createElement('li');
+      li.textContent = `${entry.ulke} (${new Date(entry.tarih).toLocaleString()})`;
+      liste.appendChild(li);
+    });
   }
 }
+
+// Sayfa yüklendiğinde çağır
+document.addEventListener('DOMContentLoaded', maceraListesiniGoster);
+
 
 window.onload = updateBars;
