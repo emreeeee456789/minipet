@@ -1,13 +1,15 @@
 // Supabase bağlantısı
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
-const supabaseUrl = 'https://ghtmaqmodwrumxpvgkjl.supabase.co'; // <- BURAYI KENDİ URL'İNLE DEĞİŞTİR
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdodG1hcW1vZHdydW14cHZna2psIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM1NDYzNzgsImV4cCI6MjA2OTEyMjM3OH0.5pFJRGOmA-vlJ0rNcdujGsxx-KLJAYyveiTuuA0QRIU'; // <- BURAYI KENDİ API KEY'İNLE DEĞİŞTİR
+const supabaseUrl = 'https://ghtmaqmodwrumxpvgkjl.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'; // Key'inin tamamını sende zaten var
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-// Ülke adlarına göre görsel URL'leri
+// Ülke görselleri (gerekirse artır)
 const countryImages = {
   Japonya: 'japonya.jpg',
+  Fransa: 'fransa.jpg',
+  Türkiye: 'turkiye.jpg'
 };
 
 // Listeyi ekrana bastır
@@ -18,29 +20,38 @@ async function maceraListesiniGoster() {
     .order('tarih', { ascending: false });
 
   const liste = document.getElementById('visitedList');
-  if (data && liste) {
-    liste.innerHTML = '';
+  if (!liste) return;
 
-    data.forEach(entry => {
-      const li = document.createElement('li');
-
-      // Tarihi düzgün formatla
-      const tarihStr = new Date(entry.tarih).toLocaleString('tr-TR');
-
-      // Ülkeye göre görsel al
-      const imageUrl = countryImages[entry.ulke] || 'default.jpg';
-
-      li.innerHTML = `
-        <img src="assets/${imageUrl}" alt="${entry.ulke}" style="width:100px; height:auto; border-radius:8px; margin-bottom:6px;"><br/>
-        <strong>${entry.ulke}</strong><br/>
-        <small>${tarihStr}</small>
-      `;
-      liste.appendChild(li);
-    });
-  } else if (error) {
+  if (error) {
     console.error("Supabase Hatası:", error.message);
+    liste.innerHTML = `<li>Hata: ${error.message}</li>`;
+    return;
   }
+
+  if (!data || data.length === 0) {
+    liste.innerHTML = '<li>Henüz hiç macera kaydı yok!</li>';
+    return;
+  }
+
+  liste.innerHTML = '';
+  data.forEach(entry => {
+    const li = document.createElement('li');
+
+    const tarihStr = entry.tarih
+      ? new Date(entry.tarih).toLocaleString('tr-TR')
+      : 'Tarih yok';
+
+    const imageUrl = countryImages[entry.ulke] || 'default.jpg';
+
+    li.innerHTML = `
+      <img src="assets/${imageUrl}" alt="${entry.ulke}" style="width:100px; height:auto; border-radius:8px; margin-bottom:6px;"><br/>
+      <strong>${entry.ulke}</strong><br/>
+      <small>${tarihStr}</small>
+    `;
+
+    liste.appendChild(li);
+  });
 }
 
-// Sayfa yüklendiğinde çalıştır
+// Sayfa yüklenince başlat
 document.addEventListener('DOMContentLoaded', maceraListesiniGoster);
