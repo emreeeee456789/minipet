@@ -1,8 +1,8 @@
 // Supabase bağlantısı
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
-const supabaseUrl = 'https://SENIN_PROJECT_URL.supabase.co'; // BURAYI DEĞİŞTİR
-const supabaseKey = 'SENIN_PUBLIC_ANON_KEY'; // BURAYI DEĞİŞTİR
+const supabaseUrl = 'https://ghtmaqmodwrumxpvgkjl.supabase.co'; // BURAYI DEĞİŞTİR
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdodG1hcW1vZHdydW14cHZna2psIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM1NDYzNzgsImV4cCI6MjA2OTEyMjM3OH0.5pFJRGOmA-vlJ0rNcdujGsxx-KLJAYyveiTuuA0QRIU'; // BURAYI DEĞİŞTİR
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Miniğimizi maceraya yolla
