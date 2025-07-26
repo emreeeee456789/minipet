@@ -1,29 +1,51 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Miniğimizin Macerası</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Miniğimiz Haritada</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <!-- Kendi stil dosyan -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="header">
-    <h1>Miniğimiz Macerada! 🌍</h1>
-    <p>Rastgele bir ülkeye gitti, bakalım neresiymiş?</p>
+    <h1>Miniğimiz Dünya Turu 🌍</h1>
+    <p>Miniğimizin gezdiği yerleri haritada görün!</p>
   </div>
 
-  <div class="adventure">
-    <h2 id="countryName"></h2>
-    <img id="countryImage" src="" alt="" style="max-width: 90%; border-radius: 12px;" />
-  </div>
+  <div id="map" style="height: 500px; margin: 20px;"></div>
 
   <div class="cta">
-    <a href="index.html">
-      <button>Geri Dön</button>
-    </a>
+    <a href="index.html"><button>Ana Sayfaya Dön</button></a>
   </div>
 
-  <script src="adventure.js"></script>
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <!-- Harita Script -->
+  <script>
+    const map = L.map('map').setView([38.9637, 35.2433], 2); // Türkiye merkezli
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap katkıcıları',
+    }).addTo(map);
+
+    // Miniğimizin gezdiği yerler
+    const visitedPlaces = [
+      { name: 'Japonya', coords: [35.6895, 139.6917] },
+      { name: 'Fransa', coords: [48.8566, 2.3522] },
+      { name: 'Türkiye', coords: [41.0082, 28.9784] }
+    ];
+
+    visitedPlaces.forEach(place => {
+      L.marker(place.coords)
+        .addTo(map)
+        .bindPopup(`<b>${place.name}</b><br>Miniğimiz burada da poz verdi! 📸`);
+    });
+  </script>
 </body>
 </html>
-
