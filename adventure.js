@@ -7,12 +7,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Ülke adlarına göre görsel URL'leri
 const countryImages = {
-  Japonya: 'japan.jpg',
-  Türkiye: 'turkey.jpg',
-  Fransa: 'france.jpg',
-  Almanya: 'germany.jpg',
-  İtalya: 'italy.jpg',
-  // istediğin kadar ekleyebilirsin
+  Japonya: 'japonya.jpg',
 };
 
 // Listeyi ekrana bastır
